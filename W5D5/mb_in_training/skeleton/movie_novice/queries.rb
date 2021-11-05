@@ -82,20 +82,17 @@ def pulp_fiction_actors
   # practice using joins
   # display the id and name of all actors in the movie Pulp Fiction
   # hint: use 'select', 'joins', 'where'
-  pulp_id = Movie.find_by(title: 'Pulp Fiction')
+  # pulp_id = Movie.find_by(title: 'Pulp Fiction')
 
-    Actor 
-    .select(:id, :name)
-    .joins(:movies)
-    .where('movie_id = ?', pulp_id)
-
-  #ALTERNATE SOLUTION--WHY DO I NEED "GROUP" FOR THIS TO WORK?
-  # Actor 
+  #   Actor 
   #   .select(:id, :name)
   #   .joins(:movies)
-  #   .joins(:castings)
-  #   .where('title = ?', 'Pulp Fiction')
-  #   .group(:id, :name)
+  #   .where('movie_id = ?', pulp_id)
+
+  Actor 
+    .select(:id, :name)
+    .joins(:movies)
+    .where('title = ?', 'Pulp Fiction')
 
 end
 
@@ -105,21 +102,18 @@ def uma_movies
   # order them by ascending year
   # hint: use 'select', 'joins', 'where', and 'order'
 
-  uma_id = Actor.find_by(name: "Uma Thurman")
+  # uma_id = Actor.find_by(name: "Uma Thurman")
 
-  Movie
+  # Movie
+  #   .select(:id, :title, :yr)
+  #   .joins(:castings)
+  #   .where('actor_id = ?', uma_id)
+  #   .order('yr ASC')
+
+    Movie
     .select(:id, :title, :yr)
-    .joins(:castings)
-    .where('actor_id = ?', uma_id)
+    .joins(:actors)
+    .where('name = ?', 'Uma Thurman')
     .order('yr ASC')
-
-    #ALTERNATE SOLUTION--WHY DO I NEED THE 'GROUP' FOR THIS TO WORK?
-    # Movie
-    # .select(:id, :title, :yr)
-    # .joins(:castings)
-    # .joins(:actors)
-    # .where('name = ?', 'Uma Thurman')
-    # .order('yr ASC')
-    # .group(:id, :title, :yr)
 
 end
