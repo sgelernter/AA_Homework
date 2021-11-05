@@ -84,10 +84,18 @@ def pulp_fiction_actors
   # hint: use 'select', 'joins', 'where'
   pulp_id = Movie.find_by(title: 'Pulp Fiction')
 
-  Actor 
+    Actor 
     .select(:id, :name)
-    .joins(:castings)
+    .joins(:movies)
     .where('movie_id = ?', pulp_id)
+
+  #ALTERNATE SOLUTION--WHY DO I NEED "GROUP" FOR THIS TO WORK?
+  # Actor 
+  #   .select(:id, :name)
+  #   .joins(:movies)
+  #   .joins(:castings)
+  #   .where('title = ?', 'Pulp Fiction')
+  #   .group(:id, :name)
 
 end
 
@@ -96,6 +104,7 @@ def uma_movies
   # display the id, title, and year of movies Uma Thurman has acted in
   # order them by ascending year
   # hint: use 'select', 'joins', 'where', and 'order'
+
   uma_id = Actor.find_by(name: "Uma Thurman")
 
   Movie
@@ -103,5 +112,14 @@ def uma_movies
     .joins(:castings)
     .where('actor_id = ?', uma_id)
     .order('yr ASC')
+
+    #ALTERNATE SOLUTION--WHY DO I NEED THE 'GROUP' FOR THIS TO WORK?
+    # Movie
+    # .select(:id, :title, :yr)
+    # .joins(:castings)
+    # .joins(:actors)
+    # .where('name = ?', 'Uma Thurman')
+    # .order('yr ASC')
+    # .group(:id, :title, :yr)
 
 end
