@@ -59,3 +59,7 @@
   <% submit_text = (cat.persisted? ? 'Update' : 'Create') + ' cat!' %>
   <input type="submit" value="<%= submit_text %>">
 </form>
+
+<% content_for :footer do %>
+<p> Fill in the fields--you know how these work! </p>
+<% end %>
