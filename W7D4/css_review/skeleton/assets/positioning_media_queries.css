@@ -109,8 +109,32 @@ label {
     display: block;
 }
 
+.hamburger-dropdown{
+  display: none;
+}
+
 /* Media Queries! */
 @media all and (max-width: 900px) {
-/* Code Goes Here */
+  div.col {
+    margin: 1px;
+  }
+  nav ul, li {
+    display: none;
+  }
+  nav > ul.hamburger-dropdown{
+    display: block;
+  }
+  .hamburger-dropdown > li {
+    background-image: url(../assets/hamburger.png);
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px;
+  }
+}
+/* .dropdown {
+  display: none;
+} */
+.hamburger-dropdown:hover li.dropdown{
+  display: block;
 }
 
