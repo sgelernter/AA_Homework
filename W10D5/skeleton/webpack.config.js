@@ -1,9 +1,9 @@
 var path = require('path');
 
 module.exports = {
-    entry: "./frontend/index.js",
+    entry: "./app.jsx",
     output: {
-        path: path.resolve(__dirname, 'skeleton', 'frontend'),
+        path: path.resolve(__dirname, 'frontend'),
         filename: "bundle.js"
     },
     devtool: 'source-map',
